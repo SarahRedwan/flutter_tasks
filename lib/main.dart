@@ -1,40 +1,28 @@
 import 'package:flutter/material.dart';
+import 'home_page.dart';
+import 'detail_page.dart';
+import 'categories_page.dart';
+import 'about_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const NewsApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class NewsApp extends StatelessWidget {
+  const NewsApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hello Flutter',
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Welcome to Flutter'),
-        backgroundColor: Colors.blue,
-      ),
-      body: const Center(
-        child: Text(
-          'This is my first Flutter app',
-          style: TextStyle(
-            fontSize: 20, // Changed text size
-            color: Colors.red, // Changed text color
-          ),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      title: 'Daily News',
+      theme: ThemeData(primarySwatch: Colors.purple),
+      home: HomePage(),
+      routes: {
+        '/detail': (context) => const DetailPage(),
+        '/categories': (context) => CategoriesPage(),
+        '/about': (context) =>  AboutPage(),
+      },
     );
   }
 }
